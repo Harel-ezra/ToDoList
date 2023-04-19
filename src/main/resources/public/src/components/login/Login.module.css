@@ -1,0 +1,15 @@
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+    align-items: center;
+    height: 50%;
+    justify-content: space-evenly;
+}
+
+#header {
+    font-size: calc(5vh + 5vw);
+    -webkit-text-stroke: calc(0.08vh + 0.08vw) #ffffff;
+    text-shadow:  0vw 0.3vh 0.3vh #1f1d1d,
+         0.3vw 0.3vh 0.3vh #1f1d1d;
+}
