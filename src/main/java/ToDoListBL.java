@@ -27,5 +27,11 @@ public class ToDoListBL {
         String toDo = json.get("toDo").getAsString();
         return ToDoListDAL.addToDo(userName, toDo);
     }
-}
+    public static String editToDo(Request request, Response response) {
+        JsonObject json = new JsonParser().parse(request.body()).getAsJsonObject();
+        String userName = json.get("name").getAsString();
+        String toDo = json.get("toDo").getAsString();
+        String editedToDo=json.get("editedToDo").getAsString();
+        return ToDoListDAL.editToDo(userName, toDo,editedToDo);
+    }}
 

@@ -31,7 +31,7 @@ public class ServerToDoList {
                 response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
             }
 
-            return "OK";
+            return " ";
         });
     }
 

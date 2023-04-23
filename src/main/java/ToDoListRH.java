@@ -5,6 +5,7 @@ public class ToDoListRH {
     {
         delete("/removeToDo",ToDoListBL::removeToDo);
         post("/addToDo",ToDoListBL::addToDo);
+        put("/editToDo",ToDoListBL::editToDo);
         get("/user",ToDoListBL::getJsonUser);
         get("*", ServerToDoList::redirectToHome);
         System.out.println("Ui server initiated");
