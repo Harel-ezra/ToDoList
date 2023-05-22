@@ -18,7 +18,6 @@ const cacheRtl = createCache({
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
-
 const App = () => {
   return (
       <CacheProvider value={ cacheRtl }>

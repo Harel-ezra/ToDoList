@@ -1,25 +1,25 @@
 import java.util.List;
 
 public class User {
-    //    @BsonProperty("id")
-//    @BsonId
+
     private int _id;
-    private List<String> missions;
+    private List<ToDo> todos;
     private String name;
 
     public User() {
     }
-    public User(int _id, List<String> missions, String name) {
-        this._id=_id;
-        this.missions=missions;
-        this.name=name;
+
+    public User(int id, List<ToDo> todos, String name) {
+        this._id = id;
+        this.todos = todos;
+        this.name = name;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
+    public void setId(int id) {
+        this._id = id;
     }
 
-    public int get_id() {
+    public int getId() {
         return _id;
     }
 
@@ -31,16 +31,16 @@ public class User {
         this.name = name;
     }
 
-    public void setMissions(List<String> missions) {
-        this.missions = missions;
+    public void setTodos(List<ToDo> todos) {
+        this.todos = todos;
     }
 
-    public List<String> getMissions() {
-        return missions;
+    public List<ToDo> getTodos() {
+        return todos;
     }
+
     @Override
-    public String toString()
-    {
-        return name+missions;
+    public String toString() {
+        return name + todos;
     }
 }

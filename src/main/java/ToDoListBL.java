@@ -1,37 +1,34 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import spark.Request;
-import spark.Response;
+import java.util.ArrayList;
 
 public class ToDoListBL {
-    public static String getJsonUser(Request request, Response response) {
-        String userName = request.queryParams("name");
-        return new Gson().toJson(getUserFromMongo(userName));
+    public static User getUserToDos(int userId) {
+//        לא צריך fromMongo
+        return ToDoListDAL.getToDosByUserName( userId);
     }
 
-    public static User getUserFromMongo(String userName) {
-        return ToDoListDAL.getMissionsFromMongoByUserName(userName);
+    public static String removeToDo( String toDo, int userId) {
+        return ToDoListDAL.removeToDo( toDo, userId);
     }
 
-    public static String removeToDo(Request request, Response response) {
-        JsonObject json = new JsonParser().parse(request.body()).getAsJsonObject();
-        String userName = json.get("name").getAsString();
-        String toDo = json.get("toDo").getAsString();
-        return ToDoListDAL.removeToDo(userName, toDo);
+    public static String addToDo( String toDo, int userId) {
+        return ToDoListDAL.addToDo( toDo, userId);
     }
 
-    public static String addToDo(Request request, Response response) {
-        JsonObject json = new JsonParser().parse(request.body()).getAsJsonObject();
-        String userName = json.get("name").getAsString();
-        String toDo = json.get("toDo").getAsString();
-        return ToDoListDAL.addToDo(userName, toDo);
+    public static String toDoIsDone(String toDo, int userId,boolean isDone) {
+        return ToDoListDAL.toDoIsDone( toDo, userId,isDone);
+
     }
-    public static String editToDo(Request request, Response response) {
-        JsonObject json = new JsonParser().parse(request.body()).getAsJsonObject();
-        String userName = json.get("name").getAsString();
-        String toDo = json.get("toDo").getAsString();
-        String editedToDo=json.get("editedToDo").getAsString();
-        return ToDoListDAL.editToDo(userName, toDo,editedToDo);
-    }}
+
+    public static String editToDo(String toDo, String editedToDo, int userId) {
+        return ToDoListDAL.editToDo( toDo, editedToDo, userId);
+
+    }
+
+//    getAllUsers
+    public static ArrayList<User> getAllUsers() {
+        return ToDoListDAL.getAllUsersAtList();
+    }
+
+
+}
 

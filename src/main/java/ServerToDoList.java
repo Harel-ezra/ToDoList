@@ -7,11 +7,12 @@ import static spark.Spark.*;
 public class ServerToDoList {
     public static void main(String[] args) {
         Spark.staticFiles.location("/public");
-        setupCores();
+        setupCORS();
         ToDoListRH.setRoutes();
+        get("*", ServerToDoList::redirectToHome);
     }
 
-    public static void setupCores() {
+    public static void setupCORS() {
         after((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -31,15 +32,12 @@ public class ServerToDoList {
                 response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
             }
 
-            return " ";
+            return "";
         });
     }
 
-
-
     public static String redirectToHome(Request request, Response response) {
         response.redirect("");
-        System.out.println("redirect to home");
         return null;
     }
 }
